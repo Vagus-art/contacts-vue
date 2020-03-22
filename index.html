@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" placeholder="search..." v-model="search" v-on:keyup.enter="searchPersons">
+        <h1 v-if="loading">Loading...</h1>
+        <ul v-else>
+            <li v-for="person in persons"> {{ person.name }} | {{ person.phone }} </li>
+        </ul>
+    </div>
+
+    <!-- VUE ONLINE --> <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- AXIOS ONLINE --> <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
