@@ -13,9 +13,8 @@
             <li v-for="person in persons"> {{ person.name }} | {{ person.phone }} </li>
         </ul>
     </div>
-
-    <!-- VUE ONLINE --> <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <!-- AXIOS ONLINE --> <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="module" src="main.js"></script>
+    <!-- VUE ONLINE (LOADED OUTSIDE OF WEBPACK)--> <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+    <!-- AXIOS ONLINE  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+    <!-- SCRIPT WITHOUT WEBPACK <script type="module" src="index.js"></script> -->
 </body>
 </html>

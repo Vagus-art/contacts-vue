@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const getPersonsDefault = () => {
     return axios.get('https://pg-raw-api.herokuapp.com/api/contacts/');
 }
