@@ -7,7 +7,7 @@
     display:flex;
     justify-content: center;
     align-items: center;
-    z-index:0;
+    z-index:2;
 }
 .overlay{
     width:100%;
@@ -15,8 +15,8 @@
     opacity:0.7;
     position:absolute !important;
     background-color: black;
-    z-index:1;
+    z-index:3;
 }
 .overlayFormCardBody{
-    z-index:2;
+    z-index:4;
 }

@@ -45,6 +45,7 @@
             v-for="person in persons"
             class="list-group-item p-3 list-group-item-action"
             href="#"
+            v-on:click="toggleFormUpdate(person.name,person.phone,person.id)"
           >
             <h4 class="text-dark">{{ person.name }}</h4>
             <h5 class="text-muted">{{ person.phone }}</h5>
@@ -56,13 +57,13 @@
         <div class="overlay" v-on:click="toggleFormClean"></div>
         <div class="card overlayFormCardBody">
           <div class="card-body">            
-          <h5 class="card-title">Add Contact</h5>
+          <h5 class="card-title">{{ formTitle }}</h5>
           <hr>
             <div class="form-group">
               <label for="name">Name</label>
               <input
                 type="text"
-                placeholder="Agustín"
+                placeholder="Agustín..."
                 v-model="name"
                 v-on:keyup.enter="searchPersons"
                 class="form-control"
@@ -73,7 +74,7 @@
               <label for="phone">Phone number</label>
               <input
                 type="text"
-                placeholder="2262456782"
+                placeholder="2262456782..."
                 v-model="phone"
                 v-on:keyup.enter="searchPersons"
                 class="form-control"

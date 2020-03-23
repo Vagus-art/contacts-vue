@@ -9,16 +9,29 @@ var app = new Vue({
     search: "",
     overlayForm: false,
     name: "",
-    phone: ""
+    phone: "",
+    action: "",
+    id: null
   },
   created() {
     this.getPersonsFromApi();
   },
   methods: {
     toggleFormClean () {
+      this.formTitle = "Add Contact";
       this.overlayForm = !this.overlayForm
-      this.name = "",
-      this.phone = ""
+      this.action = "POST";
+      this.name = "";
+      this.phone = "";
+    },
+    toggleFormUpdate (name, phone, id){
+      
+      this.formTitle = "Update Contact";
+      this.overlayForm = !this.overlayForm;
+      this.action = "PUT";
+      this.name = name;
+      this.phone = phone;
+      this.id = id;
     },
     getPersonsFromApi() {
       this.loading = true;
