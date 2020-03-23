@@ -14,19 +14,20 @@
   <body>
     <div id="app">
       <nav
-        class="navbar navbar-dark position-sticky  fixed-top justify-content-start bg-success mb-3 "
+        class="navbar navbar-dark position-sticky  fixed-top justify-content-start bg-success mb-3"
       >
-        <a class="navbar-brand" href="#">Vue-Basic</a>
-        <div class="form-inline ml-auto" >
-          <input
-            type="text"
-            placeholder="search..."
-            v-model="search"
-            v-on:keyup.enter="searchPersons"
-            class="form-control"
-          />
-        </div>
+        <a class="navbar-brand display-1" href="#">Vue-Basic</a>
+        
       </nav>
+      <div class="form-group m-3" >
+        <input
+          type="text"
+          placeholder="search..."
+          v-model="search"
+          v-on:keyup.enter="searchPersons"
+          class="form-control"
+        />
+      </div>
       <div class="container mb-3">
         <div v-if="loading" class="d-flex justify-content-center m-5">
           <div class="spinner-border" role="status">
