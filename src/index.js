@@ -1,4 +1,3 @@
-//import Vue from "vue";
 import { getPersonsDefault, getPersonsSearch } from "./axios/index.js";
 
 var app = new Vue({
