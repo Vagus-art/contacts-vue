@@ -1,16 +1,25 @@
 import { getPersonsDefault, getPersonsSearch } from "./axios/index.js";
+import styles from './styles.css';
 
 var app = new Vue({
   el: "#app",
   data: {
     loading: false,
     persons: [],
-    search: ""
+    search: "",
+    overlayForm: false,
+    name: "",
+    phone: ""
   },
   created() {
     this.getPersonsFromApi();
   },
   methods: {
+    toggleFormClean () {
+      this.overlayForm = !this.overlayForm
+      this.name = "",
+      this.phone = ""
+    },
     getPersonsFromApi() {
       this.loading = true;
       getPersonsDefault()
