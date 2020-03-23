@@ -1,20 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="app">
-        <input type="text" placeholder="search..." v-model="search" v-on:keyup.enter="searchPersons">
-        <h1 v-if="loading">Loading...</h1>
-        <ul v-else>
-            <li v-for="person in persons"> {{ person.name }} | {{ person.phone }} </li>
+      <nav
+        class="navbar navbar-dark position-sticky  fixed-top justify-content-start bg-success mb-3 "
+      >
+        <a class="navbar-brand" href="#">Vue-Basic</a>
+        <div class="form-inline ml-auto" >
+          <input
+            type="text"
+            placeholder="search..."
+            v-model="search"
+            v-on:keyup.enter="searchPersons"
+            class="form-control"
+          />
+        </div>
+      </nav>
+      <div class="container mb-3">
+        <div v-if="loading" class="d-flex justify-content-center m-5">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+
+        <ul v-else class="list-group">
+          <a
+            v-for="person in persons"
+            class="list-group-item p-3 list-group-item-action"
+            href="#"
+          >
+            <h4 class="text-dark">{{ person.name }}</h4>
+            <h5 class="text-muted">{{ person.phone }}</h5>
+          </a>
         </ul>
+      </div>
     </div>
-    <!-- VUE ONLINE (LOADED OUTSIDE OF WEBPACK)--> <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
-    <!-- AXIOS ONLINE  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
-    <!-- SCRIPT WITHOUT WEBPACK <script type="module" src="index.js"></script> -->
-<script type="text/javascript" src="main.js"></script></body>
+    <!-- VUE ONLINE (LOADED OUTSIDE OF WEBPACK)-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script type="text/javascript" src="main.js"></script></body>
 </html>
