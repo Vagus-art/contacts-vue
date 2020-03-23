@@ -43,12 +43,12 @@
         <ul v-else class="list-group">
           <a
             v-for="person in persons"
-            class="list-group-item p-3 list-group-item-action"
+            class="list-group-item list-group-item-action"
             href="#"
             v-on:click="toggleFormUpdate(person.name,person.phone,person.id)"
           >
-            <h4 class="text-dark">{{ person.name }}</h4>
-            <h5 class="text-muted">{{ person.phone }}</h5>
+            <div class="text-dark h5">{{ person.name }}</div>
+            <div class="text-muted">{{ person.phone }}</div>
           </a>
         </ul>
         
