@@ -6,8 +6,6 @@ import {
   updatePerson
 } from "./axios/index.js";
 
-import debounce from "lodash/debounce";
-
 //styles are imported because webpack only injects them in the html if they are instanced in the js entry
 import styles from "./styles.css";
 
@@ -28,25 +26,9 @@ const app = new Vue({
     isDBEnd: false
   },
   mounted() {
-    this.handleDebouncedScroll = debounce(this.handleScroll, 100);
     this.getPersonsFromApi();
   },
-  beforeDestroy() {
-    this.removeListScrollListener();
-  },
   methods: {
-    addListScrollListener(){
-      this.$refs.contactList.addEventListener(
-        "scroll",
-        this.handleDebouncedScroll
-      );
-    },
-    removeListScrollListener(){
-      this.$refs.contactList.removeEventListener(
-        "scroll",
-        this.handleDebouncedScroll
-      );
-    },
     toggleFormClean() {
       this.formTitle = "Add Contact";
       this.overlayForm = !this.overlayForm;
@@ -92,7 +74,6 @@ const app = new Vue({
         .then(response => {
           this.loading = false;
           this.persons = response.data.data;
-          this.addListScrollListener();
           console.log(response);
         })
         .catch(err => {
@@ -101,11 +82,10 @@ const app = new Vue({
     },
     searchPersons() {
       this.loading = true;
-      this.removeListScrollListener();
+      this.isDBEnd = true;
       if (this.search === "") {
         this.getPersonsFromApi();
       } else {
-        this.removeListScrollListener();
         getPersonsSearch(this.search)
           .then(response => {
             this.loading = false;
@@ -115,15 +95,6 @@ const app = new Vue({
           .catch(err => {
             console.log(err);
           });
-      }
-    },
-    handleScroll(event) {
-      if (
-        this.$refs.contactList.scrollTop ===
-        this.$refs.contactList.scrollHeight -
-          this.$refs.contactList.offsetHeight
-      ) {
-        this.pushMorePersons();
       }
     },
     pushMorePersons() {
@@ -142,8 +113,6 @@ const app = new Vue({
           .catch(err => {
             console.log(err);
           });
-      } else {
-        this.removeListScrollListener();
       }
     }
   }
