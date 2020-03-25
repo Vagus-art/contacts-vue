@@ -6,6 +6,10 @@ export const getPersonsDefault = () => {
   return axios.get(API_ROOT);
 };
 
+export const getPersonsWithOffset = (offset) => {
+  return axios.get(`${API_ROOT}/offset/${offset}`);
+};
+
 export const getPersonsSearch = searchString => {
   return axios.get(
     `${API_ROOT}/search/${searchString}`
