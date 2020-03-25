@@ -1,8 +1,7 @@
-# vue-instance-practice
-Práctica a todo lo anterior a los componentes
-
+# Vue-Basic
+## A basic Vue crud designed for consuming pg-rest-api
 ## Todo
- - Load more data when scrolling
- - POST form
- - PUT form
- - DELETE button
+ - Form validation
+ - About section
+ - Request error handling
+ - List item buttons (delete and edit)
