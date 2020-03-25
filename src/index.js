@@ -123,10 +123,10 @@ const app = new Vue({
         this.$refs.contactList.scrollHeight -
           this.$refs.contactList.offsetHeight
       ) {
-        this.pushMoreContacts();
+        this.pushMorePersons();
       }
     },
-    pushMoreContacts() {
+    pushMorePersons() {
       this.offset++;
       if (!this.isDBEnd) {
         this.loadingMore = true;
