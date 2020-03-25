@@ -35,6 +35,7 @@ var app = new Vue({
     },
     handleSubmit() {
       this.overlayForm = !this.overlayForm;
+      this.loading = true;
       if (this.action==='POST'){
         postPerson({
           name:this.name,
