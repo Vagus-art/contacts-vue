@@ -5,6 +5,7 @@ import {
   postPerson,
   updatePerson
 } from "./axios/index.js";
+
 import debounce from "lodash/debounce";
 
 //styles are imported because webpack only injects them in the html if they are instanced in the js entry
@@ -26,25 +27,26 @@ const app = new Vue({
     offset: 0,
     isDBEnd: false
   },
-  created() {
-    this.getPersonsFromApi();
-  },
   mounted() {
     this.handleDebouncedScroll = debounce(this.handleScroll, 100);
-    this.$refs.contactList.addEventListener(
-      "scroll",
-      this.handleDebouncedScroll
-    );
+    this.getPersonsFromApi();
   },
   beforeDestroy() {
-    // I switched the example from `destroyed` to `beforeDestroy`
-    // to exercise your mind a bit. This lifecycle method works too.
-    this.$refs.contactList.removeEventListener(
-      "scroll",
-      this.handleDebouncedScroll
-    );
+    this.removeListScrollListener();
   },
   methods: {
+    addListScrollListener(){
+      this.$refs.contactList.addEventListener(
+        "scroll",
+        this.handleDebouncedScroll
+      );
+    },
+    removeListScrollListener(){
+      this.$refs.contactList.removeEventListener(
+        "scroll",
+        this.handleDebouncedScroll
+      );
+    },
     toggleFormClean() {
       this.formTitle = "Add Contact";
       this.overlayForm = !this.overlayForm;
@@ -84,10 +86,13 @@ const app = new Vue({
     },
     getPersonsFromApi() {
       this.loading = true;
+      this.isDBEnd = false;
+      this.offset = 0;
       getPersonsDefault()
         .then(response => {
           this.loading = false;
           this.persons = response.data.data;
+          this.addListScrollListener();
           console.log(response);
         })
         .catch(err => {
@@ -96,9 +101,11 @@ const app = new Vue({
     },
     searchPersons() {
       this.loading = true;
+      this.removeListScrollListener();
       if (this.search === "") {
         this.getPersonsFromApi();
       } else {
+        this.removeListScrollListener();
         getPersonsSearch(this.search)
           .then(response => {
             this.loading = false;
@@ -111,7 +118,6 @@ const app = new Vue({
       }
     },
     handleScroll(event) {
-      // Any code to be executed when the window is scrolled
       if (
         this.$refs.contactList.scrollTop ===
         this.$refs.contactList.scrollHeight -
@@ -137,10 +143,7 @@ const app = new Vue({
             console.log(err);
           });
       } else {
-        this.$refs.contactList.removeEventListener(
-          "scroll",
-          this.handleDebouncedScroll
-        );
+        this.removeListScrollListener();
       }
     }
   }
