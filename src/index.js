@@ -19,6 +19,7 @@ const app = new Vue({
     search: "",
     overlayForm: false,
     deleteWindow: false,
+    aboutWindow: false,
     currentDeleteName: null,
     currentDeleteId: null,
     name: "",
@@ -127,6 +128,9 @@ const app = new Vue({
     confirmDelete(){
       deletePerson(this.currentDeleteId).then(res=>this.getPersonsFromApi());
       this.toggleDelete();
+    },
+    toggleAbout(){
+      this.aboutWindow = !this.aboutWindow;
     }
   }
 });
