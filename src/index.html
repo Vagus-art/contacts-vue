@@ -91,8 +91,8 @@
         <div class="overlay" v-on:click="toggleFormClean"></div>
         <div class="card overlayFormCardBody">
           <div class="card-body">
-            <h5 class="card-title">{{ formTitle }}</h5>
-            <hr />
+            <h5 class="card-title text-center">{{ formTitle }}</h5>
+            <hr>
             <div class="form-group">
               <label for="name">Name</label>
               <input
@@ -153,31 +153,33 @@
       <div v-show="aboutWindow" class="overlayFormCard">
         <div class="overlay" v-on:click="toggleAbout"></div>
         <div class="card overlayFormCardBody" style="max-width:600px">
-          <div class="card-body">
-            <h4 class="card-text text-center">
+          <div class="card-body mt-2 mb-4">
+            <h4 class="card-title text-center">
               About this project
             </h4>
-            <br />
-            <p class="card-text text-center">
-              Vue-Basic was made only as a proof of concept, to compare React
-              and Vue in terms of maintainability, scalability and simplicity.
-            </p>
-            <p class="card-text text-center">
-              Is the first of 3 UIs designed to do the same task. In this case I
-              was testing how could it look if I only used a Vue instance
-              instead of generating a template with Vue-CLI.
-            </p>
-            <p class="card-text text-center">
-              The style was made using Bootstrap (and some css I had to write,
-              to make those absolute windows possible) and requests are
-              handled by axios.
-            </p>
-            <p class="card-text text-center">
-              In development it uses Babel and Webpack to make ES6 and modules
-              possible, and to maximize retro compatibility (It's not as good as
-              I wanted it to be though, probably bootstrap 4's fault, I have to
-              check that, since the app without style was working).
-            </p>
+            <div style="max-height:50vh; overflow-y: scroll;">   
+              <br />
+              <p class="card-text text-center">
+                Vue-Basic was made only as a proof of concept, to compare React
+                and Vue in terms of maintainability, scalability and simplicity.
+              </p>
+              <p class="card-text text-center">
+                Is the first of 3 UIs designed to do the same task. In this case
+                I was testing how could it look if I only used a Vue instance
+                instead of generating a template with Vue-CLI.
+              </p>
+              <p class="card-text text-center">
+                The style was made using Bootstrap (and some css I had to write,
+                to make those absolute windows possible) and requests are
+                handled by axios.
+              </p>
+              <p class="card-text text-center">
+                In development it uses Babel and Webpack to make ES6 and modules
+                possible, and to maximize retro compatibility (It's not as good
+                as I wanted it to be though, probably bootstrap 4's fault, I
+                have to check that, since the app without style was working).
+              </p>
+            </div>
             <br />
             <button
               class="btn btn-primary float-right"
