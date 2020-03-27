@@ -120,18 +120,13 @@ const app = new Vue({
       }
     },
     toggleDelete(name,id){
-      this.deleteWindow=true;
-      this.currentDeleteName=name;
-      this.currentDeleteId=id;
-    },
-    cleanDelete(){
-      this.deleteWindow=false;
-      this.currentDeleteName=null;
-      this.currentDeleteId=null;
+      this.deleteWindow= !this.deleteWindow;
+      this.currentDeleteName=name || null;
+      this.currentDeleteId=id || null;
     },
     confirmDelete(){
       deletePerson(this.currentDeleteId).then(res=>this.getPersonsFromApi());
-      this.cleanDelete();
+      this.toggleDelete();
     }
   }
 });
