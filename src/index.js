@@ -3,7 +3,8 @@ import {
   getPersonsSearch,
   getPersonsWithOffset,
   postPerson,
-  updatePerson
+  updatePerson,
+  deletePerson
 } from "./axios/index.js";
 
 //styles are imported because webpack only injects them in the html if they are instanced in the js entry
@@ -17,6 +18,9 @@ const app = new Vue({
     persons: [],
     search: "",
     overlayForm: false,
+    deleteWindow: false,
+    currentDeleteName: null,
+    currentDeleteId: null,
     name: "",
     phone: "",
     action: "",
@@ -114,6 +118,20 @@ const app = new Vue({
             console.log(err);
           });
       }
+    },
+    toggleDelete(name,id){
+      this.deleteWindow=true;
+      this.currentDeleteName=name;
+      this.currentDeleteId=id;
+    },
+    cleanDelete(){
+      this.deleteWindow=false;
+      this.currentDeleteName=null;
+      this.currentDeleteId=null;
+    },
+    confirmDelete(){
+      deletePerson(this.currentDeleteId).then(res=>this.getPersonsFromApi());
+      this.cleanDelete();
     }
   }
 });

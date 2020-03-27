@@ -44,3 +44,8 @@ export const updatePerson = (payload, callback) => {
         console.log('Request error: ', e);
       });
   };
+
+  export const deletePerson = (id) => {
+    return axios.delete(`${API_ROOT}/${id}`);
+  };
+  
