@@ -7,8 +7,14 @@ import {
   deletePerson
 } from "./axios/index.js";
 
+import Vuelidate from "vuelidate";
+import { required, minLength, maxLength, integer } from "vuelidate/lib/validators";
+
+
 //styles are imported because webpack only injects them in the html if they are instanced in the js entry
 import styles from "./styles.css";
+
+Vue.use(Vuelidate);
 
 const app = new Vue({
   el: "#app",
@@ -32,6 +38,19 @@ const app = new Vue({
   },
   mounted() {
     this.getPersonsFromApi();
+  },
+  validations:{
+    name:{
+      required,
+      min: minLength(5),
+      max: maxLength(20)
+    },
+    phone:{
+      required,
+      min: minLength(5),
+      max: maxLength(20),
+      integer
+    }
   },
   methods: {
     toggleFormClean() {
