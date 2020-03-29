@@ -67,7 +67,7 @@
             </div>
 
             <!-- CONTACT BUTTONS (UPDATE AND DELETE) -->
-            <div class="mb-auto mt-auto ml-auto">
+            <div class="mb-auto mt-auto ml-auto d-flex flex-row">
               <button
                 v-on:click="toggleFormUpdate(person.name,person.phone,person.id)"
                 class="btn btn-light border"
@@ -76,7 +76,7 @@
               </button>
               <button
                 v-on:click="toggleDelete(person.name,person.id)"
-                class="btn btn-light border"
+                class="btn btn-light border ml-1"
               >
                 <i class="far fa-trash-alt"></i>
               </button>
